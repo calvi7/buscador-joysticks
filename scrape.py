@@ -1,5 +1,6 @@
 from lxml import html
 import requests
+import time
 
 page = requests.get('https://videojuegos.mercadolibre.com.ar/para-playstation-ps4-4-gamepads-joysticks/dualshock-4_PriceRange_8000-0_NoIndex_True')
 tree = html.fromstring(page.content)
@@ -7,6 +8,8 @@ tree = html.fromstring(page.content)
 links = tree.xpath('//a[@class="ui-search-result__content ui-search-link"]/@href')
 title = tree.xpath('//a[@class="ui-search-result__content ui-search-link"]/@title')
 price = tree.xpath('//span[@class="price-tag-fraction"]/text()')
+
+time_data = time.asctime()
 
 amount = 10
 
@@ -37,14 +40,18 @@ with open('data.html', 'w') as f:
             '</head>'
             '<body>'
             '<div class="container">'
-            '<h1 class="header">INFO</h1>')
+            '<h1 class="header">INFO </h1>'
+            f'<h3> Ult Actualizacion: {time_data} </h3>')
     
     for key, value in orden.items():
         f.write('')
         f.write(f'<p>{key} - VALOR: ${value["precio"]}<a href="{value["link"]}"> IR </a> <p>')
+        
     f.write('</div>')
+    
     f.write('<script>'
             'alert("Opciones de Joysticks!")'
             '</script>')
+    
     f.write('</body>')
     
