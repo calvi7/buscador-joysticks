@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mejores Joysticks</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/styles.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='img/js.ico')}}" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="header">INFO</h1>
+        <h3> Ultima Actualizacion: {{time_data}} </h3>
+        {% for data, link in page_data %}
+        <p>{{data}} - <a href={{link}}> Ir Ahora</a></p>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
