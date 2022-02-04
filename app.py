@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from lxml import html
 import requests
 import time
@@ -8,8 +8,6 @@ app = Flask(__name__)
 
 app.static_folder = 'static'
 
-port = int(os.environ.get('PORT', 5000))
-app.run(host='0.0.0.0', port=port, debug=True)
 
 @app.route('/')
 def hello():
