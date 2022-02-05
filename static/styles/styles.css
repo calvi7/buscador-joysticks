@@ -10,4 +10,20 @@ h1 {
     margin: 0 auto;
     justify-content: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.info {
+    margin: 5 auto;
+    padding: 10px;
+    border-radius: 12%;
+    width: 250px;
+
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: white;
 }
