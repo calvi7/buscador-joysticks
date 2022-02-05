@@ -5,15 +5,25 @@
     <title>Mejores Joysticks</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/styles.css')}}">
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='img/js.ico')}}" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
 </head>
 
 <body>
     <div class="container">
-        <h1 class="header">INFO</h1>
-        <h3> Ultima Actualizacion: {{time_data}} </h3>
-        {% for data, link in page_data %}
-        <p>{{data}} - <a href={{link}}> Ir Ahora</a></p>
-        {% endfor %}
+        <div class="container">
+            <h1 class="header">JOYSTICKS</h1>
+        </div>
+        <div class="container">
+            <h3> Ultima Actualizacion: {{time_data}} </h3>
+        </div>
+        <div class="container">
+            {% for data, link in page_data %}
+            <p class="info">{{data}}<br>
+                <a class="box" href={{link}} target="_blank"> Ir Ahora <i class="fas fa-arrow-right"></i> </a>
+            </p>
+            {% endfor %}
+        </div>
     </div>
 </body>
 

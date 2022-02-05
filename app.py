@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from lxml import html
 import requests
 import time
@@ -8,6 +8,8 @@ app = Flask(__name__)
 
 app.static_folder = 'static'
 
+def int_(s):
+    return int(s.replace('.', ''))
 
 @app.route('/')
 def hello():
@@ -36,11 +38,8 @@ def hello():
 
     data = dict(filter(lambda x: 'sony' in x[0].lower(), data.items()))
 
-    def int_(s):
-        return int(s.replace('.', ''))
-
     orden = dict(sorted(data.items(), key=lambda x: int_(x[1]["precio"])))
 
-    page_data = [(f"{key} - {value['precio']}", value["link"]) for key, value in orden.items()]
+    page_data = [(f"${value['precio']} - {key}", value["link"]) for key, value in orden.items()]
 
     return render_template('index.html', time_data=time_data, page_data=page_data)
